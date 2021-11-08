@@ -10,10 +10,13 @@
         var count:Int=10//운동 횟수 제어자
         var saveCount:Int=0//운동 횟수 증가 정도 저장 인텐트로 넘겨줄거임
         upperBtn.setOnClickListener{
-            if(count<20)count++//추가 11.09 각각 begin은 if(count<20) normald은 if(count<25) hard는 if(count<30)
+            if(count<30){
+                count++
+                saveCount++
+            }//추가 11.09 각각 begin은 if(count<20) normald은 if(count<25) hard는 if(count<30)
             else Toast.makeText(this,"10회 이상 추가는 안되요",Toast.LENGTH_SHORT).show()//추가 11.09
             countTv.setText(count.toString()+"회")
-            if(count<20)saveCount++//추가 11.09 각각 begin은 if(count<20) normald은 if(count<25) hard는 if(count<30)
+
         }
 
         downBtn.setOnClickListener{
