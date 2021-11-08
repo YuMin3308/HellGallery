@@ -33,7 +33,7 @@ class HardActivity : AppCompatActivity() {
 
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
-        //추가 업다운 버튼 11.04
+        //수정 업다운 버튼 11.09
         var upperBtn: View =findViewById(R.id.upperBtn)//횟수 업 버튼
         var downBtn: View =findViewById(R.id.downBtn)//횟수 다운 버튼
         var count:Int=20//운동 횟수 제어자
@@ -55,7 +55,7 @@ class HardActivity : AppCompatActivity() {
             else Toast.makeText(this,"0이하로는 더 못내려갑니다.",Toast.LENGTH_SHORT).show()
             txtTime3.setText(count.toString()+"회")
         }
-        // /추가 업다운 버튼 11.04
+        // /수정 업다운 버튼 11.09
 
         //추가 11.04 횟수 세팅
         fun setsetting(num:String){
