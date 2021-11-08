@@ -41,6 +41,26 @@
         운동세트 제어문 마지막 부분에 추가
         upperBtn.setVisibility(View.INVISIBLE)//11.04 버튼 없애기
         downBtn.setVisibility(View.INVISIBLE)//11.04 버튼 없애기
+        .
+        .
+        .
+        .
+        .
+        타이머 함수 변경 전부 이걸로 대체필
+        fun startTimer() {
+        time = 0
+        var txtTime3 = findViewById(R.id.txtTime3) as TextView
+        timerTask = kotlin.concurrent.timer(period = 10) {    // timer() 호출
+            time++    // period=10, 0.01초마다 time를 1씩 증가
+            val sec = time / 100    // time/100, 나눗셈의 몫 (초 부분)
+            val milli = time % 100    // time%100, 나눗셈의 나머지 (밀리초 부분)
+
+            runOnUiThread {
+                if (sec >= 40) txtTime3.text = "40:00"//각각 begin은 if (sec >= 20) txtTime3.text = "20:00" normald은 if (sec >= 30) txtTime3.text = "30:00"
+                else txtTime3.text = "$sec:$milli"    // TextView 세팅
+            }
+        }
+    }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
