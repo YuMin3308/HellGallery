@@ -2,7 +2,7 @@
 수정된 운동 단계별 파일과 경험치 획득 부분만 올림
 
 액티비티 파일
-<운동부분>
+<운동부분>Begin,Normal,Hard
 ////////////////////////////////////////////////////////////////////////////////////////////////////
         //추가 업다운 버튼 11.04
         var upperBtn: View =findViewById(R.id.upperBtn)//횟수 업 버튼
@@ -35,7 +35,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-<경험치획득부분>
+<경험치획득부분>Finish
  /////////////////////////////////////////////////////////////////////////////////////////////
                         //추가 11.04 경험치 추가 획득
                         if(intent.hasExtra("save")){
@@ -47,8 +47,9 @@
 /////////////////////////////////////////////////////////////////////////////////////////////
 
 xml 레이아웃 파일
-<버튼 추가>
+<버튼 추가>Begin,Normal,Hard
 ////////////////////////////////////////////////////////////////////////////////////////////
+//<Begin>
  //추가부분11.04
     <ImageView
         android:id="@+id/upperBtn"
@@ -72,3 +73,47 @@ xml 레이아웃 파일
         app:srcCompat="@android:drawable/arrow_down_float" />
     // /추가부분11.04(업다운 버튼)
 /////////////////////////////////////////////////////////////////////////////////////////////
+//<Normal>
+<ImageView
+        android:id="@+id/upperBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTime2"
+        app:layout_constraintTop_toBottomOf="@+id/nxtBtn2"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <ImageView
+        android:id="@+id/downBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTime2"
+        app:layout_constraintTop_toBottomOf="@+id/upperBtn"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+ /////////////////////////////////////////////////////////////////////////////////////////////
+//<Hard>
+ <ImageView
+        android:id="@+id/upperBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTime3"
+        app:layout_constraintTop_toBottomOf="@+id/nxtBtn3"
+        app:srcCompat="@android:drawable/arrow_up_float" />
+
+    <ImageView
+        android:id="@+id/downBtn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTime3"
+        app:layout_constraintTop_toBottomOf="@+id/upperBtn"
+        app:srcCompat="@android:drawable/arrow_down_float" />
+ /////////////////////////////////////////////////////////////////////////////////////////////
