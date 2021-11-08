@@ -39,17 +39,21 @@ class NormalActivity : AppCompatActivity() {
         var count: Int = 15//운동 횟수 제어자
         var saveCount: Int = 0//운동 횟수 증가 정도 저장 인텐트로 넘겨줄거임
         upperBtn.setOnClickListener {
-            count++
-            txtTime2.setText(count.toString() + "회")
-            saveCount++
+            if(count<25){
+                count++
+                saveCount++
+            }//추가 11.09
+            else Toast.makeText(this,"10회 이상 추가는 안되요",Toast.LENGTH_SHORT).show()//추가 11.09
+            txtTime2.setText(count.toString()+"회")
         }
 
-        downBtn.setOnClickListener {
-            if (count != 0) count--
-            if (count >= 0) {
+        downBtn.setOnClickListener{
+            if(count>0){
+                count--
                 saveCount--
-                txtTime2.setText(count.toString() + "회")
-            } else Toast.makeText(this, "0이하로는 더 못내려갑니다.", Toast.LENGTH_SHORT).show()
+            }
+            else Toast.makeText(this,"0이하로는 더 못내려갑니다.",Toast.LENGTH_SHORT).show()
+            txtTime2.setText(count.toString()+"회")
         }
         // /추가 업다운 버튼 11.04
 
@@ -114,6 +118,7 @@ class NormalActivity : AppCompatActivity() {
                             Intent(this, FinishActivity::class.java)//다음 화면으로이동하기 위한 인텐트 객체 생성.
                         intentNormal.putExtra("id", intent.getStringExtra("id"))
                         intentNormal.putExtra("save", "$saveCount") //추가 11.04 운동 횟수조작 카운트 값 넘김
+                        intentNormal.putExtra("Normal","Normal")//추가 11.09 난이도 태그
                         startActivity(intentNormal)
                     }, 35000L)
             }

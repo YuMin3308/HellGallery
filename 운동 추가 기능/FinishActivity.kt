@@ -56,7 +56,9 @@ class FinishActivity : AppCompatActivity() {
                         if(intent.hasExtra("save")) {
                             var saveCount: String
                             saveCount = intent.getStringExtra("save").toString()
-                            user_data.exp += ((500 + (saveCount.toInt() * 10)).toLong())
+                            if(intent.hasExtra("Begin")){user_data.exp += ((500 + (saveCount.toInt() * 10)).toLong())}//추가 11.09 난이도별 경험치 세분화
+                            else if(intent.hasExtra("Normal")){user_data.exp += ((600 + (saveCount.toInt() * 10)).toLong())}//추가 11.09 난이도별 경험치 세분화
+                            else if(intent.hasExtra("Hard")){user_data.exp += ((700 + (saveCount.toInt() * 10)).toLong())}//추가 11.09 난이도별 경험치 세분화
                             // /추가 11.04 경험치 추가 획득
                             /////////////////////////////////
                         }// /로그인한 이메일이면

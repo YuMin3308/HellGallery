@@ -35,18 +35,21 @@ class BeginActivity : AppCompatActivity() {
         var count:Int=10//운동 횟수 제어자
         var saveCount:Int=0//운동 횟수 증가 정도 저장 인텐트로 넘겨줄거임
         upperBtn.setOnClickListener{
-            count++
+            if(count<20){
+                saveCount++
+                count++}//추가 11.09
+            else Toast.makeText(this,"10회 이상 추가는 안되요",Toast.LENGTH_SHORT).show()//추가 11.09
             countTv.setText(count.toString()+"회")
-            saveCount++
+
         }
 
         downBtn.setOnClickListener{
-            if(count!=0) count--
-            if(count>=0) {
+            if(count>0){
+                count--
                 saveCount--
-                countTv.setText(count.toString()+"회")
             }
             else Toast.makeText(this,"0이하로는 더 못내려갑니다.",Toast.LENGTH_SHORT).show()
+            countTv.setText(count.toString()+"회")
         }
         // /추가 업다운 버튼 11.04
 
@@ -104,6 +107,7 @@ class BeginActivity : AppCompatActivity() {
                     val intentBegin = Intent(this,FinishActivity::class.java)//다음 화면으로이동하기 위한 인텐트 객체 생성.
                     intentBegin.putExtra("id",intent.getStringExtra("id"))
                     intentBegin.putExtra("save","$saveCount")//추가 11.04 운동 횟수조작 카운트 값 넘김
+                    intentBegin.putExtra("Begin","Begin")//추가 11.09 난이도 태그
                     startActivity(intentBegin)},25000L)
             }
         }
