@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.logo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".IntroLayout"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".InterfaceMain"
+            android:exported="true" />
+        <activity
+            android:name=".exerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".BeginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".HardActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FinishActivity"
+            android:exported="true" />
+        <activity
+            android:name=".NormalActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SignUp"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.JumpingJack"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.PushUp"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.Upper"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.PlankSideUp"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.ChairDips"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.Plank"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.LegRaise"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.Lunge"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.Bridge"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.MountainClimber"
+            android:exported="true" />
+        <activity
+            android:name=".exercise.Burpee"
+            android:exported="true" />
+        <activity
+            android:name=".reportActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Community.Community_main"
+            android:exported="true" />
+        <activity
+            android:name=".Community.Community_PostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Community.Community_Deatil_PostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Community.Community_Edit_Activity"
+            android:exported="true"/>
+        <activity
+            android:name=".Community.Comment.Comment"
+            android:exported="true" />
+    </application>
+
+</manifest>
