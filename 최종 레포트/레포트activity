@@ -1,0 +1,93 @@
+package com.example.logo
+
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.dinuscxj.progressbar.CircleProgressBar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
+class reportActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth; // 파이어베이스
+    private val TAG: String = "Interf" +
+            "aceMain"
+    val db = Firebase.firestore
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_report)
+        db.collection("users")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) { // 가져온 문서들이 result로 들어감
+                    Log.d(TAG, "${document.id} => ${document.data}")
+
+                    //유저 데이터 가져오기
+                    val user_data = FireStore(
+                        document["email"] as String,
+                        document["exp"] as Long, document["level"] as Long,
+                        document["height"] as Long, document["weight"] as Long
+                    )
+                  //  val exNum = findViewById<TextView>(R.id.exerNumber)
+                  //  val number = user_data.exp / 500 + (user_data.level-1) * 4
+                  //  exNum.setText(number.toString())
+
+                    progressBar(user_data.level, user_data.exp) // 레벨 정보 함수
+
+                    textUser(user_data.height, user_data.weight)
+
+
+                    if (user_data.email.equals(intent.getStringExtra("id")))
+                        break // 로그인한 이메일 찾았으면 데이터베이스 탐색중지
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents.", exception)
+            }
+        var btn :Button=findViewById(R.id.button)
+        btn.setOnClickListener {
+            val memIntent = Intent(this, MemInfo::class.java)
+            memIntent.putExtra("id",intent.getStringExtra("id"))
+            memIntent.putExtra("pw",intent.getStringExtra("pw"))//수정11.19
+            startActivity(memIntent)
+        }
+
+    }
+
+    private fun textUser(height: Long, weight: Long) {
+        val tall = findViewById<TextView>(R.id.tall)
+        val weigh = findViewById<TextView>(R.id.weigh)
+        val bmi = findViewById<TextView>(R.id.bmi)
+
+        val sum = weight / ((height/100.00) * (height/100.00))
+
+        tall.setText(height.toString())
+        weigh.setText(weight.toString())
+        bmi.setText(String.format("%.2f",sum))
+    }
+
+    private fun progressBar(level: Long, exp: Long): Unit {
+        val basicBar = findViewById<ProgressBar>(R.id.basicBar)
+        val normalBar = findViewById<ProgressBar>(R.id.normalBar)
+        val circleBar = findViewById<CircleProgressBar>(R.id.progressBar)
+        val levelText = findViewById<TextView>(R.id.progressInLevelText)
+
+        val sum = exp + (level-1)*2000
+        val percent = ((exp.toFloat() / 2000) * 100)
+
+        levelText.setText("LV." + level.toString())
+
+        basicBar.setIndeterminate(false)
+        basicBar.setProgress(sum.toInt())
+
+        normalBar.setIndeterminate(false)
+        normalBar.setProgress(sum.toInt())
+
+        circleBar.setProgress(percent.toInt())
+    }
+
+}
